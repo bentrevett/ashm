@@ -1,10 +1,9 @@
 import sys
 
-reg = {"R"+str(x):0 for x in range(16)}
-labels = dict()
-
 def execute(code):
     
+    reg = {"R"+str(x):0 for x in range(16)}
+    labels = dict()
     pc = 0
     
     print("parsing code into instructions...")
