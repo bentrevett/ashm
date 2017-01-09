@@ -4,6 +4,10 @@
 * __All arithmetic is integer arithmetic only.__
 * __All comparisons are done on comparison between registers only.__
 
+Use as: `python3 ashm.py <filename with extension>`
+
+Can also be imported via: `import ashm` and used as `ashm.execute(code)`, where `code` is a string of your ashm code.
+
 ## Instructions
 
 #### MOV A, B
