@@ -1,7 +1,11 @@
+import sys
+
 reg = {"R"+str(x):0 for x in range(16)}
 labels = dict()
 
-def execute(code, pc):
+def execute(code):
+    
+    pc = 0
     
     print("parsing code into instructions...")
     
@@ -77,6 +81,10 @@ def execute(code, pc):
         elif tokens[0] == 'LBL':
             print(tokens[0])
             pc += 1
+        
+        elif tokens[0] == 'JMP':
+            print(tokens[0])
+            pc = labels[tokens[1]]    
             
         elif tokens[0] == 'JEQ':
             print(tokens[0])
@@ -137,17 +145,18 @@ def tokenize(code):
 
 def main():
 
-    pc = 0
-
     print("opening file...")
 
-    f = open("ashm.txt", 'r')
+    if len(sys.argv) == 2: 
+        f = open(sys.argv[1], 'r')
+    else: 
+        print("Usage: {} filename".format(sys.argv[0]))
 
     print("reading file...")
 
     code = f.read()
     
-    execute(code, pc)
+    execute(code)
     
 if __name__ == "__main__": 
     main()
