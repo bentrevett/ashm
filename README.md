@@ -40,6 +40,10 @@
 
 - Creates a label that can be jumped to.
 
+#### JMP A
+
+- Unconditional jump to label A.
+
 #### JEQ A B C
 
 - Jumps to label C if the values in registers A and B are equal.
