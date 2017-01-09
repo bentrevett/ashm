@@ -58,6 +58,22 @@ def execute(code, pc):
                 reg[tokens[1]] *= int(tokens[2])
             pc += 1
             
+        elif tokens[0] == 'DIV':
+            print(tokens[0])
+            if tokens[2][0] == 'R':
+                reg[tokens[1]] = reg[tokens[1]] // reg[tokens[2]]
+            else:
+                reg[tokens[1]] = reg[tokens[1]] // int(tokens[2])
+            pc += 1
+        
+        elif tokens[0] == 'MOD':
+            print(tokens[0])
+            if tokens[2][0] == 'R':
+                reg[tokens[1]] = reg[tokens[1]] % reg[tokens[2]]
+            else:
+                reg[tokens[1]] = reg[tokens[1]] % int(tokens[2])
+            pc += 1
+        
         elif tokens[0] == 'LBL':
             print(tokens[0])
             pc += 1
@@ -93,6 +109,13 @@ def execute(code, pc):
         elif tokens[0] == 'JLZ':
             print(tokens[0])
             if reg[tokens[1]] < 0:
+                pc = labels[tokens[2]]  
+            else:
+                pc += 1
+                
+        elif tokens[0] == 'JEZ':
+            print(tokens[0])
+            if reg[tokens[1]] == 0:
                 pc = labels[tokens[2]]  
             else:
                 pc += 1
